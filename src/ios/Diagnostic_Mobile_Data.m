@@ -6,11 +6,9 @@
  *  Copyright (c) 2012 AVANTIC ESTUDIO DE INGENIEROS
  */
 
-#import "Diagnostic_Mobile_Data.h"
+#import <CoreTelephony/CTCellularData.h>
 
-#import <arpa/inet.h> // For AF_INET, etc.
-#import <ifaddrs.h> // For getifaddrs()
-#import <net/if.h> // For IFF_LOOPBACK
+#import "Diagnostic_Mobile_Data.h"
 
 @implementation Diagnostic_Mobile_Data
 
