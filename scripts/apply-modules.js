@@ -21,7 +21,8 @@ const MODULES = [
     "MOTION",
     "NFC",
     "EXTERNAL_STORAGE",
-    "AIRPLANE_MODE"
+    "AIRPLANE_MODE",
+    "MOBILE_DATA"
 ];
 
 const COMMENT_START = "<!--";

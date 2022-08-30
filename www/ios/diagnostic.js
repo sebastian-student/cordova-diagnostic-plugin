@@ -594,9 +594,9 @@ var Diagnostic = (function(){
      * @param {Function} errorCallback -  The callback which will be called when the operation encounters an error.
      *  This callback function is passed a single string parameter containing the error message.
      */
-    Diagnostic.isMobileDataAllowed = function(successCallback, errorCallback) {
+    Diagnostic.isMobileDataAuthorized = function(successCallback, errorCallback) {
         if(cordova.plugins.diagnostic.mobileData){
-            cordova.plugins.diagnostic.mobileData.isMobileDataAllowed.apply(this, arguments);
+            cordova.plugins.diagnostic.mobileData.isMobileDataAuthorized.apply(this, arguments);
         }else{
             throw "Diagnostic Mobile Data module is not installed";
         }

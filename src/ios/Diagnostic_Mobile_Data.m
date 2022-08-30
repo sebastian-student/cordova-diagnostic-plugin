@@ -32,11 +32,11 @@ static NSString*const LOG_TAG = @"Diagnostic_Mobile_Data[native]";
 #pragma mark - Plugin API
 /********************************/
 
-- (void) isMobileDataAllowed: (CDVInvokedUrlCommand*)command
+- (void) isMobileDataAuthorized: (CDVInvokedUrlCommand*)command
 {
     [self.commandDelegate runInBackground:^{
         @try {
-            [diagnostic sendPluginResultBool:[self isMobileDataAllowed] :command];
+            [diagnostic sendPluginResultBool:[self isMobileDataAuthorized] :command];
         }
         @catch (NSException *exception) {
             [diagnostic handlePluginException:exception :command];
@@ -48,7 +48,7 @@ static NSString*const LOG_TAG = @"Diagnostic_Mobile_Data[native]";
 #pragma mark - Internals
 /********************************/
 
-- (BOOL) isMobileDataAllowed {
+- (BOOL) isMobileDataAuthorized {
     return _cellularInfo.restrictedState == kCTCellularDataNotRestricted;
 }
 

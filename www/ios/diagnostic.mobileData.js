@@ -49,11 +49,11 @@
      * @param {Function} errorCallback -  The callback which will be called when the operation encounters an error.
      *  This callback function is passed a single string parameter containing the error message.
      */
-     Diagnostic_Mobile_Data.isMobileDataAllowed = function(successCallback, errorCallback) {
+     Diagnostic_Mobile_Data.isMobileDataAuthorized = function(successCallback, errorCallback) {
         return cordova.exec(Diagnostic._ensureBoolean(successCallback),
             errorCallback,
             'Diagnostic_Mobile_Data',
-            'isMobileDataAllowed',
+            'isMobileDataAuthorized',
             []);
     };
 

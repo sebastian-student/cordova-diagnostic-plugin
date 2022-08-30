@@ -17,6 +17,6 @@
 
 @property (nonatomic) CTCellularData* cellularInfo;
 
-- (void) isMobileDataAllowed: (CDVInvokedUrlCommand*)command;
+- (void) isMobileDataAuthorized: (CDVInvokedUrlCommand*)command;
 
 @end

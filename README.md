@@ -83,6 +83,8 @@ Cordova diagnostic plugin [![Latest Stable Version](https://img.shields.io/npm/v
     - [isWifiEnabled()](#iswifienabled)
     - [setWifiState()](#setwifistate)
     - [switchToWifiSettings()](#switchtowifisettings)
+  - [Mobile Data module](#mobile-data-module)
+    - [isMobileDataAuthorized()](#ismobiledataauthorized)
   - [Camera module](#camera-module)
     - [isCameraPresent()](#iscamerapresent)
     - [isCameraAvailable()](#iscameraavailable)
@@ -2104,6 +2106,39 @@ Platforms: Android
 Displays WiFi settings to allow user to enable WiFi.
 
     cordova.plugins.diagnostic.switchToWifiSettings();
+
+## Mobile Data module
+
+Purpose: get state of mobile data permission
+
+Platforms: iOS
+
+Configuration name: `MOBILE_DATA`
+
+### isMobileDataAuthorized()
+
+Platforms: iOS
+
+Checks if mobile data is authorized for this app.
+On iOS this returns true if the per app Mobile Data setting is set to enabled (regardless of whether it's connected to a network).
+
+    cordova.plugins.diagnostic.isMobileDataAuthorized(successCallback, errorCallback);
+
+#### Parameters
+
+- {Function} successCallback -  The callback which will be called when operation is successful.
+This callback function is passed a single boolean parameter which is TRUE if per app Mobile Data is enabled.
+- {Function} errorCallback -  The callback which will be called when operation encounters an error.
+The function is passed a single string parameter containing the error message.
+
+
+#### Example usage
+
+    cordova.plugins.diagnostic.isMobileDataAuthorized(function(authorized){
+        console.log("Mobile data for this app is " + (authorized ? "authorized" : "not authorized"));
+    }, function(error){
+        console.error("The following error occurred: "+error);
+    });
 
 ## Camera module
 
