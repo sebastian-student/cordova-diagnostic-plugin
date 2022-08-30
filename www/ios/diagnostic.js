@@ -581,6 +581,27 @@ var Diagnostic = (function(){
         }
     };
 
+    /*****************
+     * Mobile Data   *
+     ****************/
+
+    /**
+     * Checks if mobile data is allowed for this app.
+     * On iOS this returns true if the per app Mobile Data setting is set to enabled (regardless of whether it's connected to a network).
+     *
+     * @param {Function} successCallback -  The callback which will be called when the operation is successful.
+     * This callback function is passed a single boolean parameter which is TRUE if per app Mobile Data is enabled.
+     * @param {Function} errorCallback -  The callback which will be called when the operation encounters an error.
+     *  This callback function is passed a single string parameter containing the error message.
+     */
+    Diagnostic.isMobileDataAllowed = function(successCallback, errorCallback) {
+        if(cordova.plugins.diagnostic.mobileData){
+            cordova.plugins.diagnostic.mobileData.isMobileDataAllowed.apply(this, arguments);
+        }else{
+            throw "Diagnostic Mobile Data module is not installed";
+        }
+    };
+
     /***************
      * Bluetooth   *
      ***************/

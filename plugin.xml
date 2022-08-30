@@ -103,6 +103,22 @@
         <header-file src="src/ios/Diagnostic_Wifi.h" />
         <source-file src="src/ios/Diagnostic_Wifi.m" />
         <!--END_MODULE WIFI-->
+        
+        <!--BEGIN_MODULE Mobile Data-->
+        <config-file target="config.xml" parent="/*">
+            <feature name="Diagnostic_Mobile_Data">
+                <param name="ios-package" value="Diagnostic_Mobile_Data" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <js-module src="www/ios/diagnostic.mobileData.js" name="Diagnostic_Mobile_Data">
+            <merges target="cordova.plugins.diagnostic.mobileData" />
+        </js-module>
+
+        <header-file src="src/ios/Diagnostic_Mobile_Data.h" />
+        <source-file src="src/ios/Diagnostic_Mobile_Data.m" />
+        <!--END_MODULE Mobile Data-->
 
         <!--BEGIN_MODULE CAMERA-->
         <config-file target="config.xml" parent="/*">
