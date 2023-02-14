@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [PR Type](#pr-type)
+- [PR Checklist](#pr-checklist)
+- [What is the purpose of this PR?](#what-is-the-purpose-of-this-pr)
+- [Does this PR introduce a breaking change?](#does-this-pr-introduce-a-breaking-change)
+- [What testing has been done on the changes in the PR?](#what-testing-has-been-done-on-the-changes-in-the-pr)
+- [What testing has been done on existing functionality?](#what-testing-has-been-done-on-existing-functionality)
+- [Other information](#other-information)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## PR Type
 What kind of change does this PR introduce?
 
