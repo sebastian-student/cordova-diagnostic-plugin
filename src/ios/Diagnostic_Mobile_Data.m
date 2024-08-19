@@ -7,6 +7,7 @@
  */
 
 #import <CoreTelephony/CTCellularData.h>
+#import <ifaddrs.h>
 
 #import "Diagnostic_Mobile_Data.h"
 
@@ -34,7 +35,8 @@ static NSString*const LOG_TAG = @"Diagnostic_Mobile_Data[native]";
 {
     [self.commandDelegate runInBackground:^{
         @try {
-            [diagnostic sendPluginResultBool:[self isMobileDataAuthorized] :command];
+            bool authorized = [self isMobileDataAuthorized] || ![self hasCellular];
+            [diagnostic sendPluginResultBool:authorized :command];
         }
         @catch (NSException *exception) {
             [diagnostic handlePluginException:exception :command];
@@ -48,6 +50,26 @@ static NSString*const LOG_TAG = @"Diagnostic_Mobile_Data[native]";
 
 - (BOOL) isMobileDataAuthorized {
     return _cellularInfo.restrictedState == kCTCellularDataNotRestricted;
+}
+
+- (bool) hasCellular {
+    // implementation from https://stackoverflow.com/a/14507324
+    struct ifaddrs * addrs;
+    const struct ifaddrs * cursor;
+    bool found = false;
+    if (getifaddrs(&addrs) == 0) {
+        cursor = addrs;
+        while (cursor != NULL) {
+            NSString *name = [NSString stringWithUTF8String:cursor->ifa_name];
+            if ([name isEqualToString:@"pdp_ip0"]) {
+                found = true;
+                break;
+            }
+            cursor = cursor->ifa_next;
+        }
+        freeifaddrs(addrs);
+    }
+    return found;
 }
 
 @end
