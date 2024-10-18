@@ -4102,19 +4102,9 @@ So to use this method in conjunction with the Cordova camera plugin, make sure y
 When requesting permission to use device functionality, a message is displayed to the user indicating the reason for the request.
 These messages are stored in the `{project}-Info.plist` file under `NS*UsageDescription` keys.
 
-Upon installing this plugin into your project, it will add the following default messages to your plist.
-To override these defaults, you can use `<config-file>` blocks in your `config.xml`:
-
 `config.xml`
-
-    <platform name="ios">
-        <config-file platform="ios" target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
-            <string>My custom message for always using location.</string>
-        </config-file>
-        <config-file platform="ios" target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
-            <string>My custom message for using location when in use.</string>
-        </config-file>
-    </platform>
+It is advised to set them inside `InfoPlist.strings` for example with cordova-plugin-localization-strings.
+This should avoid interference with other plugins using the same permissions.
 
 # Example project
 
