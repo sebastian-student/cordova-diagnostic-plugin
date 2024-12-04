@@ -7,6 +7,7 @@
  */
 
 #import "Diagnostic.h"
+#import <ifaddrs.h>
 // Only import the following header if we're not on Mac Catalyst
 #if !TARGET_OS_MACCATALYST
 #import <CoreTelephony/CTCellularData.h>
