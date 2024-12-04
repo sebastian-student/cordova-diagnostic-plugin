@@ -246,6 +246,35 @@ static CTCellularData* cellularData;
     }];
 }
 
+- (void) deviceSupportsMobileData: (CDVInvokedUrlCommand*)command
+{
+    [self.commandDelegate runInBackground:^{
+        @try {
+            // implementation from https://stackoverflow.com/a/14507324
+            struct ifaddrs * addrs;
+            const struct ifaddrs * cursor;
+            bool supported = false;
+            if (getifaddrs(&addrs) == 0) {
+                cursor = addrs;
+                while (cursor != NULL) {
+                    NSString *name = [NSString stringWithUTF8String:cursor->ifa_name];
+                    if ([name isEqualToString:@"pdp_ip0"]) {
+                        supported = true;
+                        break;
+                    }
+                    cursor = cursor->ifa_next;
+                }
+                freeifaddrs(addrs);
+            }
+
+            [diagnostic sendPluginResultBool:supported :command];
+        }
+        @catch (NSException *exception) {
+            [diagnostic handlePluginException:exception :command];
+        }
+    }];
+}
+
 - (void) isAccessibilityModeEnabled: (CDVInvokedUrlCommand*)command
 {
     [self.commandDelegate runInBackground:^{
